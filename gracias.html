@@ -32,12 +32,18 @@
       color: #007bff;
       text-decoration: underline;
     }
+    #autoBtn {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <h2>Redirigiendo a WhatsApp...</h2>
   <p>Si no sos redirigido automáticamente, tocá el botón:</p>
-  <a id="linkManual" href="#">Ir a WhatsApp</a>
+  <a id="manualLink" href="#">Ir a WhatsApp</a>
+
+  <!-- Botón invisible que se clickea solo -->
+  <a id="autoBtn" href="#" target="_self">Invisible</a>
 
   <script>
     window.addEventListener("load", function () {
@@ -55,22 +61,20 @@
       const mensaje = encodeURIComponent("Hola, me gustaria obtener más información.");
       const url = https://wa.me/${numero}?text=${mensaje};
 
-      // Enlace manual
-      document.getElementById('linkManual').href = url;
+      document.getElementById('manualLink').href = url;
+      document.getElementById('autoBtn').href = url;
 
       if (!isBot) {
         try {
           fbq('trackCustom', 'RedireccionWhatsApp', {
             content_name: 'Gracias por visitar',
           });
-        } catch (e) {
-          console.warn('fbq no cargado');
-        }
+        } catch (e) {}
 
-        // Redirige sí o sí después de 1 segundo
+        // Espera 800ms y simula un clic en el botón invisible
         setTimeout(() => {
-          window.location.href = url;
-        }, 1000);
+          document.getElementById('autoBtn').click();
+        }, 800);
       }
     });
   </script>
