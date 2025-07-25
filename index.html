@@ -1,34 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Redirigiendo...</title>
-    <meta name="robots" content="noindex, nofollow" />
-    <script>
-      // Detectar bots de Meta/Facebook/Instagram
-      const bots = [
-        /facebookexternalhit/i,
-        /Facebot/i,
-        /WhatsApp/i,
-        /Meta/i,
-        /Instagram/i
-      ];
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Casino</title>
+</head>
+<body style="font-family: sans-serif; text-align: center; padding: 100px;">
+  <h1>¡Bienvenido al M1nijueg0 Viral!</h1>
+  <p>Jug4 hoy y g4ná. Te damos un b0n0 de bienvenida 🤑</p>
 
-      const userAgent = navigator.userAgent;
-      const isBot = bots.some(bot => bot.test(userAgent));
-
-      if (!isBot) {
-        // Número en base64: "NTQ5MjYxMjM0NTg5MQ=="
-        const encoded = "NTQ5MjYxMjM0NTg5MQ==";
-        const decoded = atob(encoded);
-        const mensaje = encodeURIComponent("Hola, vengo por la publicidad");
-        window.location.href = `https://wa.me/${decoded}?text=${mensaje}`;
-      } else {
-        document.write("<h3>Gracias por visitar</h3>");
-      }
-    </script>
-  </head>
-  <body>
-    <noscript>Activá JavaScript para continuar.</noscript>
-  </body>
+  <a href="/gracias.html" style="
+    display: inline-block;
+    background-color: #00c851;
+    color: white;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 30px;">
+    Quiero jugar ahora
+  </a>
+</body>
 </html>
