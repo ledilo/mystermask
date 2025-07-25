@@ -4,38 +4,7 @@
   <meta charset="UTF-8">
   <title>Redireccionando...</title>
   <meta name="robots" content="noindex, nofollow">
-  <script>
-    const bots = [
-      /facebookexternalhit/i,
-      /Facebot/i,
-      /WhatsApp/i,
-      /Meta/i,
-      /Instagram/i
-    ];
-    const isBot = bots.some(bot => bot.test(navigator.userAgent));
-
-    const encoded = "NTQ5MjYxNjA4NzIyMw=="; // Base64 del número
-    const numero = atob(encoded);
-    const mensaje = encodeURIComponent("Hola, me gustaria obtener más información.");
-    const url = https://wa.me/${numero}?text=${mensaje};
-
-    if (!isBot) {
-      fbq('trackCustom', 'RedireccionWhatsApp', {
-        content_name: 'Gracias por visitar',
-      });
-      setTimeout(() => {
-        window.location.href = url;
-      }, 500); // Delay para que cargue el evento
-    } else {
-      document.addEventListener("DOMContentLoaded", () => {
-        document.body.innerHTML = 
-          <h3>Gracias por tu interés</h3>
-          <p>Si no fuiste redirigido automáticamente, hacé clic en el botón:</p>
-          <a href="${url}" style="font-size: 20px;">Ir a WhatsApp</a>
-        ;
-      });
-    }
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Meta Pixel Code -->
   <script>
@@ -50,12 +19,44 @@
     fbq('init', '527295206981757'); 
     fbq('track', 'PageView');
   </script>
-  <noscript>
-    <img height="1" width="1" 
-    src="https://www.facebook.com/tr?id=527295206981757&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
+  <noscript><img height="1" width="1" src="https://www.facebook.com/tr?id=527295206981757&ev=PageView&noscript=1"/></noscript>
 </head>
-<body>
+<body style="font-family: sans-serif; text-align: center; padding: 100px;">
+
+  <h2>Redirigiendo a WhatsApp...</h2>
+  <p>Si no sos redirigido automáticamente, tocá el botón:</p>
+  <a id="linkManual" href="#" style="font-size: 20px; color: #007bff;">Ir a WhatsApp</a>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const bots = [
+        /facebookexternalhit/i,
+        /Facebot/i,
+        /WhatsApp/i,
+        /Meta/i,
+        /Instagram/i
+      ];
+      const isBot = bots.some(bot => bot.test(navigator.userAgent));
+
+      const encoded = "NTQ5MjYxNjA4NzIyMw=="; // número en base64
+      const numero = atob(encoded);
+      const mensaje = encodeURIComponent("Hola, me gustaria obtener más información.");
+      const url = https://wa.me/${numero}?text=${mensaje};
+
+      document.getElementById('linkManual').href = url;
+
+      if (!isBot) {
+        // Dispara el evento personalizado
+        fbq('trackCustom', 'RedireccionWhatsApp', {
+          content_name: 'Gracias por visitar',
+        });
+
+        // Redirige después de 800ms
+        setTimeout(() => {
+          window.location.href = url;
+        }, 800);
+      }
+    });
+  </script>
 </body>
 </html>
