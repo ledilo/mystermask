@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Redireccionando...</title>
-  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
 
-  <!-- Meta Pixel Code -->
+  <!-- ⚠️ Meta Redirección directa a WhatsApp -->
+  <meta http-equiv="refresh" content="2;url=https://wa.me/5492616087223?text=Hola,%20me%20gustaria%20obtener%20m%C3%A1s%20informaci%C3%B3n.">
+
+  <!-- Meta Pixel (se dispara antes de redirigir) -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -16,8 +19,9 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '527295206981757'); 
+    fbq('init', '527295206981757');
     fbq('track', 'PageView');
+    fbq('trackCustom', 'RedireccionWhatsApp');
   </script>
   <noscript><img height="1" width="1" src="https://www.facebook.com/tr?id=527295206981757&ev=PageView&noscript=1"/></noscript>
 
@@ -25,58 +29,21 @@
     body {
       font-family: sans-serif;
       text-align: center;
-      padding: 100px;
+      padding: 80px;
     }
     a {
-      font-size: 20px;
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 18px;
       color: #007bff;
-      text-decoration: underline;
-    }
-    #autoBtn {
-      display: none;
     }
   </style>
 </head>
 <body>
   <h2>Redirigiendo a WhatsApp...</h2>
   <p>Si no sos redirigido automáticamente, tocá el botón:</p>
-  <a id="manualLink" href="#">Ir a WhatsApp</a>
-
-  <!-- Botón invisible que se clickea solo -->
-  <a id="autoBtn" href="#" target="_self">Invisible</a>
-
-  <script>
-    window.addEventListener("load", function () {
-      const bots = [
-        /facebookexternalhit/i,
-        /Facebot/i,
-        /WhatsApp/i,
-        /Meta/i,
-        /Instagram/i
-      ];
-      const isBot = bots.some(bot => bot.test(navigator.userAgent));
-
-      const encoded = "NTQ5MjYxNjA4NzIyMw==";
-      const numero = atob(encoded);
-      const mensaje = encodeURIComponent("Hola, me gustaria obtener más información.");
-      const url = https://wa.me/${numero}?text=${mensaje};
-
-      document.getElementById('manualLink').href = url;
-      document.getElementById('autoBtn').href = url;
-
-      if (!isBot) {
-        try {
-          fbq('trackCustom', 'RedireccionWhatsApp', {
-            content_name: 'Gracias por visitar',
-          });
-        } catch (e) {}
-
-        // Espera 800ms y simula un clic en el botón invisible
-        setTimeout(() => {
-          document.getElementById('autoBtn').click();
-        }, 800);
-      }
-    });
-  </script>
+  <a href="https://wa.me/5492616087223?text=Hola,%20me%20gustaria%20obtener%20m%C3%A1s%20informaci%C3%B3n.">
+    Ir a WhatsApp
+  </a>
 </body>
 </html>
