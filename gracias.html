@@ -20,15 +20,27 @@
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" src="https://www.facebook.com/tr?id=527295206981757&ev=PageView&noscript=1"/></noscript>
-</head>
-<body style="font-family: sans-serif; text-align: center; padding: 100px;">
 
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 100px;
+    }
+    a {
+      font-size: 20px;
+      color: #007bff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
   <h2>Redirigiendo a WhatsApp...</h2>
   <p>Si no sos redirigido automáticamente, tocá el botón:</p>
-  <a id="linkManual" href="#" style="font-size: 20px; color: #007bff;">Ir a WhatsApp</a>
+  <a id="linkManual" href="#">Ir a WhatsApp</a>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener("load", function () {
       const bots = [
         /facebookexternalhit/i,
         /Facebot/i,
@@ -38,23 +50,27 @@
       ];
       const isBot = bots.some(bot => bot.test(navigator.userAgent));
 
-      const encoded = "NTQ5MjYxNjA4NzIyMw=="; // número en base64
+      const encoded = "NTQ5MjYxNjA4NzIyMw==";
       const numero = atob(encoded);
       const mensaje = encodeURIComponent("Hola, me gustaria obtener más información.");
       const url = https://wa.me/${numero}?text=${mensaje};
 
+      // Enlace manual
       document.getElementById('linkManual').href = url;
 
       if (!isBot) {
-        // Dispara el evento personalizado
-        fbq('trackCustom', 'RedireccionWhatsApp', {
-          content_name: 'Gracias por visitar',
-        });
+        try {
+          fbq('trackCustom', 'RedireccionWhatsApp', {
+            content_name: 'Gracias por visitar',
+          });
+        } catch (e) {
+          console.warn('fbq no cargado');
+        }
 
-        // Redirige después de 800ms
+        // Redirige sí o sí después de 1 segundo
         setTimeout(() => {
           window.location.href = url;
-        }, 800);
+        }, 1000);
       }
     });
   </script>
