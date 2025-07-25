@@ -2,22 +2,77 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Landing Casino</title>
-</head>
-<body style="font-family: sans-serif; text-align: center; padding: 100px;">
-  <h1>¡Bienvenido al M1nijueg0 Viral!</h1>
-  <p>Jug4 hoy y g4ná. Te damos un b0n0 de bienvenida 🤑</p>
+  <title>Minijuego Casino</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '527295206981757'); 
+    fbq('track', 'PageView');
+  </script>
 
-  <a href="/gracias.html" style="
-    display: inline-block;
-    background-color: #00c851;
-    color: white;
-    padding: 15px 30px;
-    font-size: 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    margin-top: 30px;">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('fondo-casino.jpg'); /* Cambia esto por tu imagen */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 6px black;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 4px black;
+    }
+
+    a.btn {
+      background-color: #00c851;
+      color: white;
+      padding: 18px 40px;
+      font-size: 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 0 12px #00c851;
+      transition: all 0.3s ease;
+    }
+
+    a.btn:hover {
+      background-color: #00a643;
+      box-shadow: 0 0 18px #00ff94;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎰 ¡Minijuego Viral Activo!</h1>
+  <p>Jugá hoy y ganá. Te damos un bono especial de bienvenida 🤑</p>
+
+  <a href="/gracias.html"
+     onclick="fbq('track', 'Subscribe', {content_name: 'Botón WhatsApp'});"
+     class="btn">
     Quiero jugar ahora
   </a>
 </body>
