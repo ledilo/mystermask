@@ -1,79 +1,259 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Minijuego Casino</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  
-  <!-- Meta Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '527295206981757'); 
-    fbq('track', 'PageView');
-  </script>
-
+  <title>Bono Activado - Jugá Ahora</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background-image: url('fondo-casino.jpg'); /* Cambia esto por tu imagen */
-      background-size: cover;
-      background-position: center;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Arial', sans-serif;
+      background: #000;
+      color: #0f0;
       text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 20px;
     }
-
+    header {
+      padding: 30px 20px 20px;
+      background: linear-gradient(to bottom, #050, #000);
+      position: relative;
+    }
     h1 {
-      font-size: 38px;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 6px black;
+      font-size: 1.8rem;
+      color: #0f0;
+      margin: 10px 0;
     }
-
-    p {
-      font-size: 18px;
-      margin-bottom: 40px;
-      text-shadow: 1px 1px 4px black;
+    h2 {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin: 10px 0;
     }
-
-    a.btn {
-      background-color: #00c851;
-      color: white;
-      padding: 18px 40px;
-      font-size: 20px;
-      border-radius: 12px;
+    .boton-grande {
+      display: inline-block;
+      background: #0f0;
+      color: #000;
+      font-weight: bold;
+      padding: 18px 34px;
+      font-size: 1.2rem;
+      border-radius: 14px;
       text-decoration: none;
-      box-shadow: 0 0 12px #00c851;
-      transition: all 0.3s ease;
+      margin: 20px auto;
+      animation: pulso 1.5s infinite;
     }
-
-    a.btn:hover {
-      background-color: #00a643;
-      box-shadow: 0 0 18px #00ff94;
+    @keyframes pulso {
+      0% { box-shadow: 0 0 0px #0f0; }
+      50% { box-shadow: 0 0 20px #0f0; }
+      100% { box-shadow: 0 0 0px #0f0; }
+    }
+    section {
+      padding: 30px 15px;
+    }
+    .juegos {
+      font-size: 1rem;
+      margin: 10px 0;
+    }
+    footer {
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .boton-flotante {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f0;
+      color: #000;
+      padding: 14px 28px;
+      font-weight: bold;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 0 10px #0f0;
+      animation: rebote 1s infinite;
+      z-index: 1000;
+      font-size: 1.1rem;
+    }
+    @keyframes rebote {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, -8px); }
+    }
+    .contador {
+      font-size: 1rem;
+      margin: 0 auto 16px;
+      padding: 10px 16px;
+      background: #ff0000;
+      color: #fff;
+      font-weight: bold;
+      display: inline-block;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #f00;
+      opacity: 1;
+      transition: opacity 0.3s ease-in;
+    }
+    .separador {
+      height: 1px;
+      background: #0f0;
+      width: 80%;
+      margin: 30px auto;
+      opacity: 0.2;
+    }
+    .testimonio {
+      background: #111;
+      border: 1px solid #0f0;
+      border-radius: 10px;
+      margin: 15px auto;
+      padding: 15px;
+      max-width: 380px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #ccc;
+    }
+    .testimonio img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #0f0;
+    }
+    .testimonio .contenido {
+      flex: 1;
+    }
+    .testimonio .nombre {
+      color: #0f0;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #111;
+      color: #fff;
+      padding: 20px;
+      border: 2px solid #f00;
+      border-radius: 12px;
+      z-index: 9999;
+      display: none;
+      max-width: 90%;
+    }
+    .popup h3 {
+      color: #f00;
+      margin-bottom: 10px;
+    }
+    .popup button {
+      background: #0f0;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+    @media screen and (max-width: 480px) {
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1rem; }
+      .boton-grande { font-size: 1.1rem; padding: 16px 26px; }
+      .boton-flotante { font-size: 1rem; padding: 12px 24px; }
     }
   </style>
 </head>
 <body>
-  <h1>🎰 ¡Minijuego Viral Activo!</h1>
-  <p>Jugá hoy y ganá. Te damos un bono especial de bienvenida 🤑</p>
+  <header>
+    <div class="contador" id="countdown">⏳ TU BONO EXPIRA EN: 5:00</div>
+    <h1>¡BONO DE BIENVENIDA ACTIVADO!</h1>
+    <h2>Jugá desde el celu y cobrá hoy mismo</h2>
+    <a href="#" id="cta" class="boton-grande">PEDIR BONO AHORA</a>
+  </header>
 
-  <a href="/gracias.html"
-     onclick="fbq('track', 'Subscribe', {content_name: 'Botón WhatsApp'});"
-     class="btn">
-    Quiero jugar ahora
-  </a>
+  <section>
+    <h2>+20% en cargas mayores a $3.000 – Solo por hoy</h2>
+    <div class="separador"></div>
+    <p class="juegos">🐔 Pollo – 🎈 Globo – 🎹 Piano – 🧱 Torre – ❄️ Yeti</p>
+    <p class="juegos">Jugá sin descargar nada. Desde WhatsApp.</p>
+  </section>
+
+  <section>
+    <h2>Testimonios de jugadores reales</h2>
+    <div class="testimonio-carousel" id="testimonios"></div>
+    <div class="separador"></div>
+  </section>
+
+  <div class="popup" id="popup">
+    <h3>⚠️ ¡Esperá!</h3>
+    <p>Tu bono sigue activo por pocos minutos.<br>Si no escribís ahora, lo perdés.</p>
+    <button onclick="cerrarPopup()">Entendido</button>
+  </div>
+
+  <footer>
+    <p>© 2025 – Sitio de entretenimiento. Solo para mayores de 18 años.</p>
+  </footer>
+
+  <a href="#" id="flotante" class="boton-flotante">PEDIR BONO AHORA</a>
+
+  <script>
+    const numeroCodificado = "NTQ5MjYxNjA4NzIyMw==";
+    const numero = atob(numeroCodificado);
+    const mensaje = encodeURIComponent("Hola, quiero activar mi BONO de casino ✅");
+    const url = `https://wa.me/${numero}?text=${mensaje}`;
+
+    document.getElementById("cta").href = url;
+    document.getElementById("flotante").href = url;
+
+    // Contador regresivo inmediato
+    let duracion = 5 * 60;
+    const countdown = document.getElementById("countdown");
+    const intervalo = setInterval(() => {
+      const minutos = Math.floor(duracion / 60);
+      const segundos = duracion % 60;
+      countdown.textContent = `⏳ TU BONO EXPIRA EN: ${minutos}:${segundos.toString().padStart(2, '0')}`;
+      if (--duracion < 0) {
+        clearInterval(intervalo);
+        countdown.textContent = "❌ EL BONO EXPIRÓ. RECARGÁ LA PÁGINA.";
+      }
+    }, 1000);
+
+    // Carrusel de testimonios
+    const testimoniosData = [
+      { img: "https://randomuser.me/api/portraits/men/32.jpg", nombre: "Carlos A.", mensaje: "Cargué $5.000 y retiré $22.000 con el del pollo. ¡Increíble!" },
+      { img: "https://randomuser.me/api/portraits/women/45.jpg", nombre: "Valentina R.", mensaje: "Pensé que era joda. Hoy cobro todas las semanas 😱" },
+      { img: "https://randomuser.me/api/portraits/men/52.jpg", nombre: "Nahuel G.", mensaje: "Gané con el globo y retiré en menos de 5 minutos. ¡Muy bueno!" },
+      { img: "https://randomuser.me/api/portraits/women/21.jpg", nombre: "Antonella S.", mensaje: "Recargué $3.000 y me dieron bono extra. Retiré sin problema." }
+    ];
+    const contenedorTestimonios = document.getElementById("testimonios");
+    let indice = 0;
+
+    function mostrarTestimonio() {
+      const t = testimoniosData[indice];
+      contenedorTestimonios.innerHTML = `
+        <div class="testimonio">
+          <img src="${t.img}" alt="Testimonio">
+          <div class="contenido">
+            <div class="nombre">${t.nombre}</div>
+            <div class="mensaje">${t.mensaje}</div>
+          </div>
+        </div>
+      `;
+      indice = (indice + 1) % testimoniosData.length;
+    }
+
+    mostrarTestimonio();
+    setInterval(mostrarTestimonio, 5000);
+
+    // Exit intent popup
+    let popupMostrado = false;
+    document.addEventListener("mouseout", function(e) {
+      if (!popupMostrado && e.clientY < 50) {
+        document.getElementById("popup").style.display = "block";
+        popupMostrado = true;
+      }
+    });
+
+    function cerrarPopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
 </body>
 </html>
