@@ -194,7 +194,7 @@
   <a href="#" id="flotante" class="boton-flotante">PEDIR BONO AHORA</a>
 
   <script>
-    const numeroCodificado = "NTQ5MjYxNjA4NzIyMw==";
+    const numeroCodificado = "KzU0OTI2MTI0OTc5ODM=";
     const numero = atob(numeroCodificado);
     const mensaje = encodeURIComponent("Hola, quiero activar mi BONO de casino ✅");
     const url = `https://wa.me/${numero}?text=${mensaje}`;
@@ -202,7 +202,6 @@
     document.getElementById("cta").href = url;
     document.getElementById("flotante").href = url;
 
-    // Contador regresivo inmediato
     let duracion = 5 * 60;
     const countdown = document.getElementById("countdown");
     const intervalo = setInterval(() => {
@@ -215,7 +214,6 @@
       }
     }, 1000);
 
-    // Carrusel de testimonios
     const testimoniosData = [
       { img: "https://randomuser.me/api/portraits/men/32.jpg", nombre: "Carlos A.", mensaje: "Cargué $5.000 y retiré $22.000 con el del pollo. ¡Increíble!" },
       { img: "https://randomuser.me/api/portraits/women/45.jpg", nombre: "Valentina R.", mensaje: "Pensé que era joda. Hoy cobro todas las semanas 😱" },
@@ -242,7 +240,6 @@
     mostrarTestimonio();
     setInterval(mostrarTestimonio, 5000);
 
-    // Exit intent popup
     let popupMostrado = false;
     document.addEventListener("mouseout", function(e) {
       if (!popupMostrado && e.clientY < 50) {
@@ -255,48 +252,50 @@
       document.getElementById("popup").style.display = "none";
     }
   </script>
+
   <!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s){
-    if(f.fbq)return;n=f.fbq=function(){
-      n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)
-  }(window, document, 'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    
-  fbq('init', '527295206981757');
-  fbq('track', 'PageView');
-</script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=527295206981757&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){
+        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
 
-<script>
-  window.addEventListener('DOMContentLoaded', function () {
-    // Asegura que fbq esté disponible
-    if (typeof fbq !== 'undefined') {
-      const boton1 = document.getElementById("cta");
-      const boton2 = document.getElementById("flotante");
+    fbq('init', '527295206981757');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=527295206981757&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
 
-      if (boton1) {
-        boton1.addEventListener("click", function () {
-          fbq('track', 'Subscribe', { content_name: 'Botón WhatsApp' });
-        });
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (typeof fbq !== 'undefined') {
+        const boton1 = document.getElementById("cta");
+        const boton2 = document.getElementById("flotante");
+
+        if (boton1) {
+          boton1.addEventListener("click", function () {
+            fbq('track', 'Subscribe', { content_name: 'Botón WhatsApp' });
+          });
+        }
+
+        if (boton2) {
+          boton2.addEventListener("click", function () {
+            fbq('track', 'Subscribe', { content_name: 'Botón Flotante' });
+          });
+        }
       }
-
-      if (boton2) {
-        boton2.addEventListener("click", function () {
-          fbq('track', 'Subscribe', { content_name: 'Botón Flotante' });
-        });
-      }
-    }
-  });
-</script>
+    });
+  </script>
 </body>
 </html>
+
+
